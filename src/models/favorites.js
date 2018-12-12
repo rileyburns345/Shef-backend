@@ -5,7 +5,7 @@ const getAll = (req, res, next) => {
   return knex('favorites')
     .then(favorites => {
       console.log('model favorites:', favorites)
-      return tags
+      return favorites
     })
     .catch(err => Promise.reject(err))
 }
