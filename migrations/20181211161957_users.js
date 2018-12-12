@@ -3,7 +3,6 @@ exports.up = function(knex, Promise) {
     // TABLE COLUMN DEFINITIONS HERE
     table.increments()
     table.varchar('username').notNullable().defaultTo('')
-    table.integer('oauthId')
     table.timestamps(true, true)
   })
 }
