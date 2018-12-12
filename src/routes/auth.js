@@ -4,10 +4,9 @@ const passport = require('passport')
 const jwt = require('jsonwebtoken')
 
 // auth login
-router.get('/login', (req, res) => {
+router.get('/login/facebook', (req, res) => {
   // res.render('login', { user: req.user })
   res.sendfile('./public/index.html')
-
 })
 
 // auth logout

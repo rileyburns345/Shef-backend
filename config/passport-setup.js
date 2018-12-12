@@ -22,10 +22,12 @@ passport.use(
       clientID: process.env.CLIENT_ID,
       clientSecret: process.env.CLIENT_SECRET,
       // callbackURL: '/auth/facebook/callback'
-      callbackURL: 'http://localhost:3000/auth/facebook/callback'
+      callbackURL: 'http://localhost:3000/auth/facebook/callback',
+      profileFields: ['id', 'displayName', 'photos', 'email'],
+      passReqToCallback: true
     },
     // passport call back function
-    (accessToken, refreshToken, profile, done) => {
+    (req, accessToken, refreshToken, profile, done) => {
       console.log('passport callback function fired')
       // Check if user is in our psql db, if not, make them
       userModel.checkUser(profile._json.id)
@@ -38,8 +40,10 @@ passport.use(
           } else {
             // Create user
             let newUser = {
+              provider: 'facebook',
               name: profile.username,
-              oauthId: profile.id
+              oauthId: profile.id,
+              token: accessToken
             }
             userModel.create(newUser)
             console.log(`created new user ${newUser.username}`)
@@ -47,5 +51,21 @@ passport.use(
           }
         })
     }
-  )
-)
+  ))
+
+  let FacebookRoutes = {
+
+    authenticate: () => {
+      return passport.authenticate('facebook', {
+        scope: ['email', 'public_profile', 'user_location'] 
+      })
+    },
+
+    callback: () => {
+      return passport.authenticate('facebook', {
+        failureRedirect: '/auth/failed'
+      })
+    }
+  }
+
+module.exports = router
