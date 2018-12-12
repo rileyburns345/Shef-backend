@@ -10,6 +10,54 @@ const getAll = (limit) => {
     .catch(err => Promise.reject(err))
 }
 
+const create = (body) => {
+  return knex('users')
+    .insert(body)
+    .returning('*')
+
+    .then(user => user[0])
+    .catch(err => Promise.reject(err))
+}
+
+const getOneUser = (oauthId) => {
+  return knex('users')
+    .where('oauthId', oauthId)
+    .then(user => {
+      return user[0]
+    })
+    .catch(err => {
+      console.log(`Model route error: ${err}`)
+      Promise.reject(err)
+    })
+}
+
+const checkUser = (facebookId) => {
+  return knex('users')
+    .where('oauthId', facebookId)
+    .then(user => {
+      return user[0]
+    })
+}
+
+const getRecipesByUser = () => {
+  console.log('getRecipesByUser')
+}
+
+const deleteOne = (id) => {
+  return knex('users')
+    .where('id', id)
+    .del()
+    .returning('*')
+    .then(user => {
+      return user[0]
+    })
+    .catch(err => Promise.reject(err))
+}
+
 module.exports = { 
-  getAll 
+  getAll ,
+  create,
+  deleteOne,
+  getOneUser,
+  checkUser
 }
