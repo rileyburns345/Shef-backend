@@ -1,6 +1,6 @@
 //// CONTROLLER \\\\
 // require('dotenv').config()
-const model = require('../models/posts')
+const model = require('../models/recipes')
 // const jwt = require('jsonwebtoken')
 
 const getAll = (req, res, next) => {

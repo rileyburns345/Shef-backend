@@ -13,6 +13,7 @@ const createError = require('http-errors')
 
 //// ROUTERS \\\\
 const usersRouter = require('./src/routes/users')
+const recipesRouter = require('./src/routes/recipes')
 
 
 //// EXPRESS \\\\
@@ -43,6 +44,7 @@ app.use(express.urlencoded({ extended: false }))
 
 //// ROUTES \\\\
 app.use('/users', usersRouter)
+app.use('/recipes', recipesRouter)
 
 
 
