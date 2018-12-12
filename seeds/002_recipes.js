@@ -10,7 +10,7 @@ exports.seed = function(knex, Promise) {
         { id: 4, recipe_name: 'Caprese Pasta Salad', image_url: 'https://placekitten.com/200/300', description: 'The perfect fast meal!', instructions: '', ingredients: '', course: 'Dinner' },
         { id: 5, recipe_name: 'Chicken and Waffles', image_url: 'https://placekitten.com/200/300', description: 'My momma made these', instructions: '', ingredients: '', course: 'Lunch' },
         { id: 6, recipe_name: 'Quesadillas', image_url: 'https://placekitten.com/200/300', description: 'The best darn quesadillas I ever had. Got in a recipe book!', instructions: '', ingredients: '', course: 'Lunch' },
-        { id: 7, recipe_name: 'Minestrone Soup', image_url: 'https://placekitten.com/200/300', description: 'My awesome soup.', instructions: '', ingredients: '', course: 'Dinner' },
+        { id: 7, recipe_name: 'Minestrone Soup', image_url: 'https://placekitten.com/200/300', description: 'My awesome soup.', instructions: '', ingredients: '', course: 'Dinner' }
       ])
       .then(function() {
         // Moves id column (PK) auto-incrementer to correct value after inserts
