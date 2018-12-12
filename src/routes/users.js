@@ -4,8 +4,8 @@ const router = express.Router()
 const ctrl = require('../controllers/users')
 
 router.get('/', ctrl.getAll)
-router.get('/:oauthId', ctrl.getOneUser)
+router.get('/:id', ctrl.getOneUser)
 router.post('/', ctrl.create)
-router.delete('/:oauthId', ctrl.deleteOne)
+router.delete('/:id', ctrl.deleteOne)
 
 module.exports = router

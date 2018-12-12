@@ -9,7 +9,7 @@ const getAll = (req, res, next) => {
 }
 
 const getOneUser = (req, res, next) => {
-  return model.getOneUser(req.params.oauthId)
+  return model.getOneUser(req.params.id)
     .catch(error => {
       return next({
         status: 404,
