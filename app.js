@@ -15,6 +15,7 @@ const createError = require('http-errors')
 const usersRouter = require('./src/routes/users')
 const recipesRouter = require('./src/routes/recipes')
 const favoritesRouter = require('./src/routes/favorites')
+const userHashRouter = require('./src/models/userHash')
 
 
 //// EXPRESS \\\\
@@ -47,6 +48,7 @@ app.use(express.urlencoded({ extended: false }))
 app.use('/users', usersRouter)
 app.use('/recipes', recipesRouter)
 app.use('/favorites', favoritesRouter)
+app.use('/userHash', userHashRouter)
 
 
 

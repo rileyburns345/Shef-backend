@@ -2,7 +2,7 @@ const bcrypt = require('bcryptjs')
 const saltRounds = 12
 const pass = 'process.env.PASS'
 
-const admin = () => {
+const userHash = () => {
   bcrypt
   .genSalt(saltRounds)
   .then(salt => {
@@ -16,7 +16,6 @@ const admin = () => {
     //Store hash in password DB
   })
   .catch(err => console.error(err.message))
-
 }
 
-module.exports = admin
+module.exports = userHash
