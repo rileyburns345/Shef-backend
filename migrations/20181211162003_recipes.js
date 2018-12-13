@@ -6,9 +6,10 @@ exports.up = function(knex, Promise) {
     table.foreign('user_id').references('users.id').onDelete('CASCADE')
     table.string('image_url').defaultTo('https://placekitten.com/200/300')
     table.string('description').defaultTo('')
-    table.string('instructions').defaultTo('')
-    table.string('ingredients').defaultTo('')
+    table.text('instructions').defaultTo('')
+    table.text('ingredients').defaultTo('')
     table.string('course').defaultTo('')
+    table.string('diet').defaultTo('')
     table.timestamps(true, true)
   })
 }
