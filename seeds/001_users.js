@@ -33,6 +33,11 @@ exports.seed = function(knex, Promise) {
           username: 'Alicia',
           email: 'blank5@gmail.com',
           password: ''
+        },
+        { id: 7,
+          username: 'escheetz',
+          email: 'e.dietrich.scheetz@gmail.com',
+          password: '$2a$12$5yQRmJD689q1ltK7pbA.7u9l1qzi8JzSURXNll8q/I/xBtyBtQ.Ti'
         }
       ])
       .then(function() {
