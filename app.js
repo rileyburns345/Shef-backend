@@ -10,6 +10,7 @@ const createError = require('http-errors')
 const passport = require('passport')
 const passportSetup = require('./services/passport')
 const requireAuth = passport.authenticate('jwt', {session: false})
+const requireSignIn = passport.authenticate('local', {session: false})
 
 //// ROUTERS \\\\
 const usersRouter = require('./src/routes/users')
@@ -50,7 +51,18 @@ app.use('/', authentication)
 app.use('/users', usersRouter)
 app.use('/favorites', favoritesRouter)
 
+//// SIGNIN AUTH \\\\
+app.get('/sign-up', (req, res) => {
+  res.render('authentication/sign-up')
+})
 
+app.post('/sign-up', Authentication.signup)
+
+app.get('/sign-in', (req, res) => {
+  res.render('authentication/sign-in')
+})
+
+app.post('/sign-in', requireSignIn, Authentication.signin)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
