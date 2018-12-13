@@ -1,6 +1,6 @@
 const knex = require('../../knex')
 
-const createUser = (name, email, password) => {
+const createUser = (username, email, password) => {
   return knex('users')
     .insert(username, email, password)
     .returning('*')
