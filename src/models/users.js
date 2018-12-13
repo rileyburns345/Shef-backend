@@ -19,9 +19,9 @@ const create = (body) => {
     .catch(err => Promise.reject(err))
 }
 
-const getOneUser = (oauthId) => {
+const getOneUser = (id) => {
   return knex('users')
-    .where('oauthId', oauthId)
+    .where('id', id)
     .then(user => {
       return user[0]
     })
@@ -31,9 +31,9 @@ const getOneUser = (oauthId) => {
     })
 }
 
-const checkUser = (facebookId) => {
+const checkUser = (id) => {
   return knex('users')
-    .where('oauthId', facebookId)
+    .where('id', id)
     .then(user => {
       return user[0]
     })
