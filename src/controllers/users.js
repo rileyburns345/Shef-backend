@@ -1,9 +1,18 @@
 //// CONTROLLER \\\\
 const model = require('../models/users')
 
-const isAdmin = (req, res, next) => {
-  
-}
+// const isAdmin = (req, res, next) => {
+//   const authHeader = req.headers.authorization
+
+//   if (!authHeader) {
+//     return res.json(403).json({
+//       status: 403,
+//       message: 'FORBIDDEN'
+//     })
+//   } else {
+//     next()
+//   }
+// }
 
 const getAll = (req, res, next) => {
   return model.getAll()
