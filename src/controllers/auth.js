@@ -14,16 +14,16 @@ const signin = (req, res, next) => {
 
 const signup = (req, res, next) => {
 
-  const {name, email, password} = req.body
+  const {username, email, password} = req.body
   const saltRounds = 12
 
   if (!email || !password) {
-    res.status(422).send({error: `You must provide and email and a password.`})
+    res.status(422).send({error: `You must provide an email and a password.`})
   }
   //// SEE IF A USER WITH THE GIVEN EMAIL EXISTS \\\\
   bcrypt.hash(password, saltRounds)
     .then((hash) => {
-      return createUser(name, email, hash)
+      return createUser(username, email, hash)
         .then((newUser) => {
           res.json({token: tokenForUser(newUser)})
         })
