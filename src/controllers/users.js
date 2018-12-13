@@ -1,6 +1,10 @@
 //// CONTROLLER \\\\
 const model = require('../models/users')
 
+const isAdmin = (req, res, next) => {
+  
+}
+
 const getAll = (req, res, next) => {
   return model.getAll()
     .then((users) => {
