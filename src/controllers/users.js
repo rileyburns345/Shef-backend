@@ -1,18 +1,18 @@
 //// CONTROLLER \\\\
 const model = require('../models/users')
 
-// const isAdmin = (req, res, next) => {
-//   const authHeader = req.headers.authorization
+const isVerified = (req, res, next) => {
+  const authHeader = req.cookies.token
 
-//   if (!authHeader) {
-//     return res.json(403).json({
-//       status: 403,
-//       message: 'FORBIDDEN'
-//     })
-//   } else {
-//     next()
-//   }
-// }
+  if (!authHeader) {
+    return res.json(403).json({
+      status: 403,
+      message: 'FORBIDDEN'
+    })
+  } else {
+    next()
+  }
+}
 
 const getAll = (req, res, next) => {
   return model.getAll()
