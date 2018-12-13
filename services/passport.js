@@ -23,3 +23,28 @@ const localLogin = new LocalStrategy(localOptions, (email, password, done) => {
         .catch(err => done(err, false))
     })
 })
+
+//// SETUP OPTIONS FOR JWT STRATEGY \\\\
+
+const jwtOptions = {
+  jwtFromRequest: ExtractJwt.fromHeader('authorization'),
+  secretOrKey: config.secret,
+}
+
+//// CREATE JWT STRATEGY \\\\
+
+const jwtLogin = new JwtStrategy(jwtOptions, (payload, done) => {
+  return findUserById(payload.sub)
+    .then((foundUser) => {
+      if (foundUser) {
+        return done(null, foundUser)
+      }
+      return done(null, false)
+    })
+    .catch(err => done(err, false))
+})
+
+//// TELL PASSPORT TO USE THIS STRATEGY \\\\
+
+passport.use(jwtLogin)
+passport.use(localLogin)
