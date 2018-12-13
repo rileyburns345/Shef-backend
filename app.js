@@ -7,9 +7,9 @@ const logger = require('morgan')
 const createError = require('http-errors')
 
 //// AUTH \\\\
-// const passport = require('passport')
-// const passportSetup = require('./config/passport-setup')
-// const cookieSession = require('cookie-session')
+const passport = require('passport')
+const passportSetup = require('./services/passport')
+const requireAuth = passport.authenticate('jwt', {session: false})
 
 //// ROUTERS \\\\
 const usersRouter = require('./src/routes/users')
@@ -44,8 +44,10 @@ app.set('view engine', 'ejs')
 app.use(express.urlencoded({ extended: false }))
 
 //// ROUTES \\\\
-app.use('/users', usersRouter)
+app.get('/', requireAuth, (req, res) => res.redirect('/recipes'))
 app.use('/recipes', recipesRouter)
+app.use('/', authentication)
+app.use('/users', usersRouter)
 app.use('/favorites', favoritesRouter)
 
 
