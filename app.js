@@ -6,11 +6,13 @@ const cookieParser = require('cookie-parser')
 const logger = require('morgan')
 const createError = require('http-errors')
 
+
 //// AUTH \\\\
 const passport = require('passport')
 const passportSetup = require('./services/passport')
 const requireAuth = passport.authenticate('jwt', {session: false})
 const requireSignIn = passport.authenticate('local', {session: false})
+
 
 //// ROUTERS \\\\
 const usersRouter = require('./src/routes/users')
@@ -24,6 +26,7 @@ app.use(express.json())
 app.use(logger('dev'))
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
+
 
 //// CORS HEADERS \\\\
 app.use((req, res, next) => {
@@ -39,6 +42,7 @@ app.use((req, res, next) => {
   }
 })
 
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
@@ -50,6 +54,7 @@ app.use('/recipes', recipesRouter)
 app.use('/', authentication)
 app.use('/users', usersRouter)
 app.use('/favorites', favoritesRouter)
+
 
 //// SIGNIN AUTH \\\\
 app.get('/sign-up', (req, res) => {
@@ -64,10 +69,12 @@ app.get('/sign-in', (req, res) => {
 
 app.post('/sign-in', requireSignIn, Authentication.signin)
 
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404))
 })
+
 
 // error handler
 app.use(function(err, req, res, next) {
