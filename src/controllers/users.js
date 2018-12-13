@@ -64,5 +64,6 @@ module.exports = {
   getAll,
   getOneUser,
   create,
-  deleteOne
+  deleteOne,
+  isVerified
 }
