@@ -15,5 +15,5 @@ const createUser = (username, email, password) => {
     .then(user => user[0])
     .catch(err => Promise.reject(err))
 }
-
+//// EXPORT TO CONTROLLERS/AUTH \\\\
 module.exports = {createUser}
