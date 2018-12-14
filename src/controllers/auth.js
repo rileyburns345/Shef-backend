@@ -21,7 +21,6 @@ const signup = (req, res, next) => {
   //// GET USER DATA GETTING PASSED TO SERVER \\\\
   const {username, email, password} = req.body
   const saltRounds = 12
-
   if (!email || !password) {
     res.status(422).send({error: `You must provide an email and a password.`})
   }

@@ -1,5 +1,5 @@
 //// CONTROLLER \\\\
-const config = require('../../config')
+// const config = require('../../config')
 const model = require('../models/recipes')
 
 const getAll = (req, res, next) => {
@@ -14,7 +14,7 @@ const getPostsByUserId = (req, res, next) => {
   // console.log(req.params.user_id)
   let myId = req.params.user_id
   // let myId = jwt.verify(req.cookies.token, config.secret).myId
-  return model.getPostsByUserId(myId)
+  return model.getPostsByUserId(req.params.user_id)
     .catch(error => {
       return next({
         status: 404,
@@ -32,7 +32,7 @@ const create = (req, res, next) => {
   // if (jwt.verify(req.cookies.token, config.secret)) {
   //   myId = jwt.verify(req.cookies.token, config.secret).id
   // }
-  return model.create(req.params.user_id, req.body)
+  return model.create(req.params.id, req.body)
     .then(data => {
       res.status(201).json(data)
     })
