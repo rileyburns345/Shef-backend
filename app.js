@@ -51,7 +51,10 @@ app.use(express.urlencoded({ extended: false }))
 
 //// ROUTES \\\\
 app.get('/', requireAuth, (req, res) => res.redirect('/recipes'))
-app.use('/recipes', recipesRouter)
+app.use('/recipes', requireAuth, recipesRouter)
+// app.post('recipes/:id', requireAuth, recipesRouter)
+// app.put('recipes/:id', requireAuth, recipesRouter)
+// app.delete('recipes/:id', requireAuth, recipesRouter)
 app.use('/', authentication)
 app.use('/users', usersRouter)
 app.use('/favorites', requireAuth, favoritesRouter)
