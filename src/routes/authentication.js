@@ -22,7 +22,4 @@ router.post('/sign-in', requireSignIn, Authentication.signin)
 
 router.delete('/sign-in', Authentication.signout)
 
-//// RECIPES AUTH \\\\
-
-
 module.exports = router

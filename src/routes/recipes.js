@@ -1,9 +1,10 @@
 const express = require('express')
 const router = express.Router()
+// const requireAuth = passport.authenticate('jwt', {session: false})
 
 const ctrl = require('../controllers/recipes')
 
-router.get('/', ctrl.getAll,)
+router.get('/', ctrl.getAll)
 router.get('/:user_id', ctrl.getPostsByUserId)
 router.post('/', ctrl.create)
 router.patch('/:id', ctrl.updateOne)

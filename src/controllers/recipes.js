@@ -11,7 +11,9 @@ const getAll = (req, res, next) => {
 
 const getPostsByUserId = (req, res, next) => {
   console.log('in getpostsbyuserid controller')
-  let myId = jwt.verify(req.cookies.token, config.secret).myId
+  // console.log(req.params.user_id)
+  let myId = req.params.user_id
+  // let myId = jwt.verify(req.cookies.token, config.secret).myId
   return model.getPostsByUserId(myId)
     .catch(error => {
       return next({
@@ -26,11 +28,11 @@ const getPostsByUserId = (req, res, next) => {
 }
 
 const create = (req, res, next) => {
-  let myId
-  if (jwt.verify(req.cookies.token, config.secret)) {
-    myId = jwt.verify(req.cookies.token, config.secret).id
-  }
-  return model.create(myId, req.body)
+  // let myId
+  // if (jwt.verify(req.cookies.token, config.secret)) {
+  //   myId = jwt.verify(req.cookies.token, config.secret).id
+  // }
+  return model.create(req.params.user_id, req.body)
     .then(data => {
       res.status(201).json(data)
     })
