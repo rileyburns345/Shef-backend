@@ -5,7 +5,7 @@ const bcrypt = require('bcryptjs')
 
 const tokenForUser = (user) => {
   const timestamp = new Date().getTime()
-  return jwt.sign({id: user.id}, config.secret)
+  return jwt.encode({id: user.id}, config.secret)
 }
 
 const signin = (req, res, next) => {
