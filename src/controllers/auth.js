@@ -4,7 +4,6 @@ const {createUser} = require('../actions/signUp')
 const bcrypt = require('bcryptjs')
 
 const tokenForUser = (user) => {
-  const timestamp = new Date().getTime()
   return jwt.encode({id: user.id}, config.secret)
 }
 
