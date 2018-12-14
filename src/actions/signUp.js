@@ -1,11 +1,13 @@
 const knex = require('../../knex')
 
+//// CREATE NEW USER IN USERS TABLE \\\\
 const createUser = (username, email, password) => {
   let newObj = {
     username: username,
     email: email,
     password: password
   }
+  
   return knex('users')
     .insert(newObj)
     .returning('*')

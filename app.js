@@ -9,7 +9,9 @@ const createError = require('http-errors')
 //// AUTH \\\\
 const authentication = require('./src/routes/authentication')
 const passport = require('passport')
+//// NEED THIS FILE FOR PASSPORT TO UNDERSTAND STRATEGY \\\\
 const passportService = require('./services/passport')
+//// MIDDLEWARE FOR PROTECTED ROUTES \\\\
 const requireAuth = passport.authenticate('jwt', {session: false})
 
 
@@ -52,7 +54,7 @@ app.get('/', requireAuth, (req, res) => res.redirect('/recipes'))
 app.use('/recipes', recipesRouter)
 app.use('/', authentication)
 app.use('/users', usersRouter)
-app.use('/favorites', favoritesRouter)
+app.use('/favorites', requireAuth, favoritesRouter)
 
 
 // catch 404 and forward to error handler
