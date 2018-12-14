@@ -14,12 +14,12 @@ const isVerified = (req, res, next) => {
   }
 }
 
-const getAll = (req, res, next) => {
-  return model.getAll()
-    .then((users) => {
-      res.status(200).json(users)
-    })
-}
+// const getAll = (req, res, next) => {
+//   return model.getAll()
+//     .then((users) => {
+//       res.status(200).json(users)
+//     })
+// }
 
 const getOneUser = (req, res, next) => {
   return model.getOneUser(req.params.id)
