@@ -15,9 +15,9 @@ exports.seed = function(knex, Promise) {
           password: ''
         },
         { id: 3,
-          username: 'Russ',
+          username: 'rstorms90',
           email: 'rstorms90@gmail.com',
-          password: ''
+          password: '$2a$12$uCNW1pffaq81eJediCw3reAI13P5kfcXyjavDnoKtVcsRpS/hP3je'
         },
         { id: 4,
           username: 'Pete',
