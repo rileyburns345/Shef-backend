@@ -1,7 +1,6 @@
 //// CONTROLLER \\\\
-// require('dotenv').config()
+const config = require('../../config')
 const model = require('../models/recipes')
-// const jwt = require('jsonwebtoken')
 
 const getAll = (req, res, next) => {
   return model.getAll()
@@ -12,7 +11,7 @@ const getAll = (req, res, next) => {
 
 const getPostsByUserId = (req, res, next) => {
   console.log('in getpostsbyuserid controller')
-  let myId = jwt.verify(req.cookies.token, process.env.TOKEN_SECRET).myId
+  let myId = jwt.verify(req.cookies.token, config.secret).myId
   return model.getPostsByUserId(myId)
     .catch(error => {
       return next({
@@ -28,8 +27,8 @@ const getPostsByUserId = (req, res, next) => {
 
 const create = (req, res, next) => {
   let myId
-  if (jwt.verify(req.cookies.token, process.env.TOKEN_SECRET)) {
-    myId = jwt.verify(req.cookies.token, process.env.TOKEN_SECRET).id
+  if (jwt.verify(req.cookies.token, config.secret)) {
+    myId = jwt.verify(req.cookies.token, config.secret).id
   }
   return model.create(myId, req.body)
     .then(data => {
