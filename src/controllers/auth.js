@@ -5,7 +5,7 @@ const bcrypt = require('bcryptjs')
 
 //// USER OBJECT RETURNING ENCODED TOKEN WITH USER ID AND IMPORTED SECRET \\\\
 const tokenForUser = (user) => {
-  return jwt.sign({id: user.id}, config.secret)
+  return jwt.encode({id: user.id}, config.secret)
 }
 
 //// SIGN IN AND tokenForUser SENDS TOKEN TO FRONT END \\\\
@@ -18,6 +18,7 @@ const signin = (req, res, next) => {
 }
 
 const signup = (req, res, next) => {
+  console.log('req: ', req.body)
   //// GET USER DATA GETTING PASSED TO SERVER \\\\
   const {username, email, password} = req.body
   const saltRounds = 12
