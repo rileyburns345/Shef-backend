@@ -17,6 +17,8 @@ const signin = (req, res, next) => {
 
 const signup = (req, res, next) => {
 
+  console.log("REQ BODY", req.body)
+
   const {username, email, password} = req.body
   const saltRounds = 12
 
