@@ -42,9 +42,10 @@ const signup = (req, res, next) => {
     })
 }
 
-const signout = (req, res, next) => {
-  res.clearCookie()
-  res.end()
-}
+// const signout = (req, res, next) => {
+//   res.clearCookie()
+//   res.end()
+// }
 
-module.exports = {signup, signin, signout}
+module.exports = {signup, signin}
+// signout
