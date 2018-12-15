@@ -5,7 +5,7 @@ const bcrypt = require('bcryptjs')
 
 //// USER OBJECT RETURNING ENCODED TOKEN WITH USER ID AND IMPORTED SECRET \\\\
 const tokenForUser = (user) => {
-  return jwt.encode({id: user.id}, config.secret)
+  return jwt.sign({id: user.id}, config.secret)
 }
 
 //// SIGN IN AND tokenForUser SENDS TOKEN TO FRONT END \\\\
