@@ -1,7 +1,7 @@
 //// CONTROLLER \\\\
 const config = require('../../config')
 const model = require('../models/recipes')
-
+const jwt = require('jsonwebtoken')
 
 const getAll = (req, res, next) => {
   return model.getAll()
@@ -12,8 +12,8 @@ const getAll = (req, res, next) => {
 
 const getPostsByUserId = (req, res, next) => {
   console.log('in getpostsbyuserid controller')
-  let myId = jwt.verify(req.cookies.token, config.secret).myId
-  return model.getPostsByUserId(myId)
+  // let myId = jwt.verify(req.cookies.token, config.secret).myId
+  return model.getPostsByUserId(req.params.user_id)
     .catch(error => {
       return next({
         status: 404,
@@ -27,11 +27,11 @@ const getPostsByUserId = (req, res, next) => {
 }
 
 const create = (req, res, next) => {
-  let myId
-  if (jwt.verify(req.cookies.token, config.secret)) {
-    myId = jwt.verify(req.cookies.token, config.secret).id
-  }
-  return model.create(myId, req.body)
+  // let myId
+  // if (jwt.verify(req.cookies.token, config.secret)) {
+  //   myId = jwt.verify(req.cookies.token, config.secret).id
+  // }
+  return model.create(req.params.user_id, req.body)
     .then(data => {
       res.status(201).json(data)
     })
