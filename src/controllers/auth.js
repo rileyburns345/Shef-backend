@@ -18,7 +18,7 @@ const signin = (req, res, next) => {
 }
 
 const signup = (req, res, next) => {
-  console.log('req: ', req.body)
+  console.log(req.body)
   //// GET USER DATA GETTING PASSED TO SERVER \\\\
   const {username, email, password} = req.body
   const saltRounds = 12

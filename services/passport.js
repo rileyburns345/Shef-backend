@@ -33,7 +33,6 @@ const jwtOptions = {
 }
 
 //// CREATE JWT STRATEGY \\\\
-
 const jwtLogin = new JwtStrategy(jwtOptions, (payload, done) => {
   return findUserById(payload.sub)
     .then((foundUser) => {

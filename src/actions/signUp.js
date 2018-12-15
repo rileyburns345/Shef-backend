@@ -7,7 +7,7 @@ const createUser = (username, email, password) => {
     email: email,
     password: password
   }
-  
+
   return knex('users')
     .where('email', email)
     .insert(newObj)
