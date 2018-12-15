@@ -64,6 +64,10 @@ const updateOne = (id, body) => {
   if (body.course) {
     newPost.course = body.course
   }
+  if (body.diet) {
+    newPost.diet = body.diet
+  }
+  
   return knex('recipes')
     .where('id', id)
     .then(data => {
