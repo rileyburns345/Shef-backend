@@ -12,12 +12,13 @@ const signin = (req, res, next) => {
   res.cookie('token', token, {
     expires: new Date(Date.now() + 1000 * 60 * 60 * 24)
   })
-  res.send({ token: token })
+  // console.log(token)
+  // res.send({ token: token })
+
+  res.set('Auth', `Bearer: ${token}`).status(200).json( req.user )
 }
 
 const signup = (req, res, next) => {
-
-  console.log("REQ BODY", req.body)
 
   const {username, email, password} = req.body
   const saltRounds = 12
