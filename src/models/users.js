@@ -39,10 +39,6 @@ const checkUser = (id) => {
     })
 }
 
-const getRecipesByUser = () => {
-  console.log('getRecipesByUser')
-}
-
 const deleteOne = (id) => {
   return knex('users')
     .where('id', id)

@@ -1,18 +1,19 @@
 //// CONTROLLER \\\\
 const model = require('../models/users')
+// const jwt = require('jwt-simple')
 
-const isVerified = (req, res, next) => {
-  const authHeader = req.cookies.token
-
-  if (!authHeader) {
-    return res.json(403).json({
-      status: 403,
-      message: 'FORBIDDEN'
-    })
-  } else {
-    next()
-  }
-}
+// const jwtVerify = (req, res, next) => {
+// 	jwt.verify(req.cookies.token, config.secret, (err, _payload) => {
+// 		if (err) {
+// 			err.status = 401
+// 			err.message = `Unauthorized - Bad JWT Token cookie`
+// 			return next(err);
+// 		} else {
+// 			req.payload = _payload
+// 			next()
+// 		}
+// 	})
+// }
 
 const getAll = (req, res, next) => {
   return model.getAll()
@@ -65,5 +66,5 @@ module.exports = {
   getOneUser,
   create,
   deleteOne,
-  isVerified
+  // jwtVerify
 }

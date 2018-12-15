@@ -51,10 +51,10 @@ app.use(express.urlencoded({ extended: false }))
 
 //// ROUTES \\\\
 app.get('/', requireAuth, (req, res) => res.redirect('/recipes'))
-app.use('/recipes', requireAuth, recipesRouter)
+app.use('/recipes', recipesRouter)
 app.use('/', authentication)
 app.use('/users', usersRouter)
-app.use('/favorites', requireAuth, favoritesRouter)
+app.use('/favorites', favoritesRouter)
 
 
 // catch 404 and forward to error handler
