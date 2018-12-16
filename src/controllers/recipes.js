@@ -1,20 +1,20 @@
 //// CONTROLLER \\\\
 const model = require('../models/recipes')
-// const config = require('../../config')
-// const jwt = require('jwt-simple')
+const config = require('../../config')
+const jwt = require('jsonwebtoken')
 
-// const jwtVerify = (req, res, next) => {
-// 	jwt.verify(req.cookies.token, config.secret, (err, _payload) => {
-// 		if (err) {
-// 			err.status = 401
-// 			err.message = `Unauthorized - Bad JWT Token cookie`
-// 			return next(err);
-// 		} else {
-// 			req.payload = _payload
-// 			next()
-// 		}
-// 	})
-// }
+const jwtVerify = (req, res, next) => {
+	jwt.verify(req.cookies.token, config.secret, (err, _payload) => {
+		if (err) {
+			err.status = 401
+			err.message = `Unauthorized - Bad JWT Token cookie`
+			return next(err);
+		} else {
+			req.payload = _payload
+			next()
+		}
+	})
+}
 
 const getAll = (req, res, next) => {
   return model.getAll()
@@ -85,5 +85,6 @@ module.exports = {
   getPostsByUserId,
   create,
   updateOne,
-  deletePost
+  deletePost,
+  jwtVerify
 }

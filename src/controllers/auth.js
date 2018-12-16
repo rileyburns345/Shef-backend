@@ -9,7 +9,6 @@ const tokenForUser = (user) => {
 
 const signin = (req, res, next) => {
   let token = tokenForUser(req.user)
-  // console.log(`TOKEN FOR USER:`, token)
   // res.cookie('token', token, {
   //   expires: new Date(Date.now() + 1000 * 60 * 60 * 24)
   // })
