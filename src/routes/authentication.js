@@ -17,6 +17,4 @@ router.get('/sign-in', (req, res) => {
 
 router.post('/sign-in', requireSignIn, authentication.signin)
 
-// router.delete('/sign-in', authentication.signout)
-
 module.exports = router

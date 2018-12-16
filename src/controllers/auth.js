@@ -9,12 +9,11 @@ const tokenForUser = (user) => {
 
 const signin = (req, res, next) => {
   let token = tokenForUser(req.user)
-  res.cookie('token', token, {
-    expires: new Date(Date.now() + 1000 * 60 * 60 * 24)
-  })
-  // console.log(token)
+  // console.log(`TOKEN FOR USER:`, token)
+  // res.cookie('token', token, {
+  //   expires: new Date(Date.now() + 1000 * 60 * 60 * 24)
+  // })
   // res.send({ token: token })
-
   res.set('Auth', `Bearer: ${token}`).status(200).json( req.user )
 }
 
@@ -42,10 +41,4 @@ const signup = (req, res, next) => {
     })
 }
 
-// const signout = (req, res, next) => {
-//   res.clearCookie()
-//   res.end()
-// }
-
 module.exports = {signup, signin}
-// signout

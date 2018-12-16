@@ -1,20 +1,23 @@
 //// CONTROLLER \\\\
 const model = require('../models/users')
-const jwt = require('jsonwebtoken')
-const config = require('../../config')
+// const jwt = require('jsonwebtoken')
+// const config = require('../../config')
 
+//// NEED TO GET TOKEN IN HERE
 const jwtVerify = (req, res, next) => {
-  console.log(req.cookies.token)
-	jwt.verify(req.cookies.token, config.secret, (err, _payload) => {
-		if (err) {
-			err.status = 401
-			err.message = `Unauthorized - Bad JWT Token cookie`
-			return next(err);
-		} else {
-			req.payload = _payload
-			next()
-		}
-	})
+//   console.log(`REQ HEADERS>>>`, req)
+//   console.log(``)
+	// jwt.verify(req.cookies.token, config.secret, (err, _payload) => {
+	// 	if (err) {
+	// 		err.status = 401
+	// 		err.message = `Unauthorized...sorry!`
+	// 		return next(err);
+	// 	} else {
+	// 		// req.payload = _payload
+  //     // next()
+  //     console.log(`WWWWTTTTFFF`)
+		// }
+	// })
 }
 
 const getAll = (req, res, next) => {

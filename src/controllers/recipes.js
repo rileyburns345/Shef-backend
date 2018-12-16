@@ -1,7 +1,20 @@
 //// CONTROLLER \\\\
-const config = require('../../config')
 const model = require('../models/recipes')
-const jwt = require('jsonwebtoken')
+// const config = require('../../config')
+// const jwt = require('jwt-simple')
+
+// const jwtVerify = (req, res, next) => {
+// 	jwt.verify(req.cookies.token, config.secret, (err, _payload) => {
+// 		if (err) {
+// 			err.status = 401
+// 			err.message = `Unauthorized - Bad JWT Token cookie`
+// 			return next(err);
+// 		} else {
+// 			req.payload = _payload
+// 			next()
+// 		}
+// 	})
+// }
 
 const getAll = (req, res, next) => {
   return model.getAll()
@@ -12,7 +25,6 @@ const getAll = (req, res, next) => {
 
 const getPostsByUserId = (req, res, next) => {
   console.log('in getpostsbyuserid controller')
-  // let myId = jwt.verify(req.cookies.token, config.secret).myId
   return model.getPostsByUserId(req.params.user_id)
     .catch(error => {
       return next({
@@ -28,8 +40,8 @@ const getPostsByUserId = (req, res, next) => {
 
 const create = (req, res, next) => {
   // let myId
-  // if (jwt.verify(req.cookies.token, config.secret)) {
-  //   myId = jwt.verify(req.cookies.token, config.secret).id
+  // if (jwt.verify(req.token, config.secret)) {
+  //   myId = jwt.verify(req.token, config.secret).id
   // }
   return model.create(req.params.user_id, req.body)
     .then(data => {
