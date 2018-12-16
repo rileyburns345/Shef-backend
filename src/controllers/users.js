@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken')
 const config = require('../../config')
 
 const jwtVerify = (req, res, next) => {
+  console.log(req.cookies.token)
 	jwt.verify(req.cookies.token, config.secret, (err, _payload) => {
 		if (err) {
 			err.status = 401
