@@ -30,7 +30,6 @@ const getPostsByUserId = (user_id) => {
 
 const create = (id, body) => {
   let myobj = body
-  myobj.user_id = id
   return knex('recipes')
     .insert(myobj)
     .returning('id')
@@ -67,7 +66,7 @@ const updateOne = (id, body) => {
   if (body.diet) {
     newPost.diet = body.diet
   }
-  
+
   return knex('recipes')
     .where('id', id)
     .then(data => {
