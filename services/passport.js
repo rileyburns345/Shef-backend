@@ -48,3 +48,4 @@ const jwtLogin = new JwtStrategy(jwtOptions, (payload, done) => {
 
 passport.use(jwtLogin)
 passport.use(localLogin)
+

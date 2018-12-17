@@ -17,4 +17,10 @@ router.get('/sign-in', (req, res) => {
 
 router.post('/sign-in', requireSignIn, authentication.signin)
 
+router.get('/recipes', (req, res) => {
+  res.render('/authentication/sign-in')
+})
+
+router.post('/recipes', requireSignIn, authentication.signin)
+
 module.exports = router

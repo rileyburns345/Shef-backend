@@ -35,7 +35,7 @@ const create = (id, body) => {
     .insert(myobj)
     .returning('id')
     .then(recipe => {
-      console.log('model .then post:', recipe[0])
+      console.log('model .then:', recipe[0])
       return post[0]
     })
     .catch(err => {

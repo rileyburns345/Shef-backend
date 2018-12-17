@@ -1,7 +1,6 @@
 //// CONTROLLER \\\\
 const model = require('../models/users')
 
-
 const getAll = (req, res, next) => {
   return model.getAll()
     .then((users) => {
