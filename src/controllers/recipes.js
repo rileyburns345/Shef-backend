@@ -1,5 +1,20 @@
 //// CONTROLLER \\\\
+const jwt = require('jsonwebtoken')
+const config = require('../../config')
 const model = require('../models/recipes')
+
+const jwtVerify = (req, res, next) => {
+	jwt.verify(req.headers.token, config.secret, (err, _payload) => {
+		if (err) {
+			err.status = 401
+			err.message = `Unauthorized - Bad JWT Token cookie`
+			return next(err);
+		} else {
+			req.payload = _payload
+			next()
+		}
+	})
+}
 
 const getAll = (req, res, next) => {
   return model.getAll()
@@ -24,10 +39,6 @@ const getPostsByUserId = (req, res, next) => {
 }
 
 const create = (req, res, next) => {
-  // let myId
-  // if (jwt.verify(req.token, config.secret)) {
-  //   myId = jwt.verify(req.token, config.secret).id
-  // }
   return model.create(req.params.user_id, req.body)
     .then(data => {
       res.status(201).json(data)
@@ -70,5 +81,6 @@ module.exports = {
   getPostsByUserId,
   create,
   updateOne,
-  deletePost
+  deletePost,
+  jwtVerify
 }

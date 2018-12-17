@@ -49,10 +49,12 @@ app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
 app.use(express.urlencoded({ extended: false }))
 
+
 //// ROUTES \\\\
 app.get('/', requireAuth, (req, res) => res.redirect('/recipes'))
 app.use('/recipes', recipesRouter)
 app.use('/', authentication)
+app.use('recipes', authentication)
 app.use('/users', usersRouter)
 app.use('/favorites', favoritesRouter)
 
