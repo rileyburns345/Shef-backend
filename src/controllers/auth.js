@@ -1,11 +1,11 @@
 const jwt = require('jwt-simple')
-const config = require('../../config')
+require('dotenv').config();
 const {createUser} = require('../actions/signUp')
 const bcrypt = require('bcryptjs')
 
 //// TAKES IN USER OBJECT, RETURNS ENCODED TOKEN \\\\
 const tokenForUser = (user) => {
-  return jwt.encode({id: user.id}, config.secret)
+  return jwt.encode({id: user.id}, process.env.SECRET)
 }
 
 //// TAKES IN LOGGED USER AND CALLS tokenForUser() TO SEND TOKEN ALONG TO FRONT END \\\\

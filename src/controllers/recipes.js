@@ -1,10 +1,10 @@
 //// CONTROLLER \\\\
 const jwt = require('jsonwebtoken')
-const config = require('../../config')
+require('dotenv').config();
 const model = require('../models/recipes')
 
 const jwtVerify = (req, res, next) => {
-	jwt.verify(req.headers.token, config.secret, (err, _payload) => {
+	jwt.verify(req.headers.token, process.env.SECRET, (err, _payload) => {
 		if (err) {
 			err.status = 401
 			err.message = `Unauthorized - Bad JWT Token cookie`
