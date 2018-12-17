@@ -6,8 +6,7 @@ const {findUserById, verifyUser} = require('../src/actions/signIn')
 const LocalStrategy = require('passport-local')
 const bcrypt = require('bcryptjs')
 
-//// CREATE LOCAL STRATEGY \\\\
-
+//// CREATE LOCAL STRATEGY -- LOG USER IN ON SERVER \\\\
 const localOptions = {usernameField: 'email'}
 
 const localLogin = new LocalStrategy(localOptions, (email, password, done) => {

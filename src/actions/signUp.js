@@ -8,6 +8,7 @@ const createUser = (username, email, password) => {
     password: password
   }
   
+  //// IF EMAIL ISN'T IN DB, ADD NEW USER \\\\
   return knex('users')
     .where('email', email)
     .insert(newObj)

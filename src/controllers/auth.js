@@ -3,16 +3,19 @@ const config = require('../../config')
 const {createUser} = require('../actions/signUp')
 const bcrypt = require('bcryptjs')
 
+//// TAKES IN USER OBJECT, RETURNS ENCODED TOKEN \\\\
 const tokenForUser = (user) => {
   return jwt.encode({id: user.id}, config.secret)
 }
 
+//// TAKES IN LOGGED USER AND CALLS tokenForUser() TO SEND TOKEN ALONG TO FRONT END \\\\
 const signin = (req, res, next) => {
   let token = tokenForUser(req.user)
   // res.send({ token: token })
   res.set('Auth', `Bearer: ${token}`).status(200).json( req.user )
 }
 
+//// GRAB USER DATA FROM SIGN UP FORM \\\\
 const signup = (req, res, next) => {
 
   const {username, email, password} = req.body
