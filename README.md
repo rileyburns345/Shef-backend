@@ -1,6 +1,6 @@
 # Shef-backend
 
-## install
+## Installing
 
 ```
 git clone https://www.github.com/e-scheetz/Shef-backend 
